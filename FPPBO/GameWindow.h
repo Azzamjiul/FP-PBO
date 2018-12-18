@@ -1,16 +1,23 @@
 #pragma once
-#include "wx/wx.h"
+#include "wx\wx.h"
+#include "Mobil.h"
+#include "Lintasan.h"
+
+class Mobil;
+class Lintasan;
 
 class GameWindow : public wxWindow
 {
 public:
-	GameWindow(wxFrame *gameWindow);
+	GameWindow(wxWindow *parent);
 	~GameWindow();
 	void OnPaint(wxPaintEvent &event);
-
+	void OnTimer(wxTimerEvent &event);
+	void OnKeyDown(wxKeyEvent &event);
+	void OnKeyUp(wxKeyEvent &event);
 private:
-	wxBitmap *GameBitmap = nullptr;
+	Mobil *Car1;
+	Lintasan *lintasan, *lintasan2;
+	wxTimer *timer;
 	DECLARE_EVENT_TABLE()
-	void LoadGameBitmap();
 };
-

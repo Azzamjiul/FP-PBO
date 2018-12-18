@@ -30,7 +30,11 @@ void MainFrame::InitComponents()
 
 	SetSizer(boxSizer);
 
-	this->SetInitialSize(wxSize(640, 480)); //tambahan jiul
+	//tambahan jiul
+	XMainFrame = this->GetSize().GetX();
+	YMainFrame = this->GetSize().GetY();
+	//this->SetInitialSize(wxSize(1000, 500));
+
 	ShowHomeWindow();
 }
 

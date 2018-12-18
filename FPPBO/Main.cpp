@@ -1,6 +1,7 @@
 #include "wx\wx.h"
 #include "MainFrame.h"
 #include "TimerFrame.h"
+#include "KeyboardFrame.h"
 
 class MyApp : public wxApp
 {
@@ -13,11 +14,10 @@ DECLARE_APP(MyApp)
 
 bool MyApp::OnInit()
 {
-	/*MainFrame *frame = new MainFrame("2D Car Racing Game");
-	frame->Show(true);
-	return true;
-	*/
-	TimerFrame *frame = new TimerFrame("Timer App");
+	MainFrame *frame = new MainFrame("2D Car Racing Game");
+	//merFrame *frame = new TimerFrame("Timer App");
+	//yboardFrame *frame = new KeyboardFrame("Keyboard Event Handling");
+
 	frame->Show();
 	return true;
 }

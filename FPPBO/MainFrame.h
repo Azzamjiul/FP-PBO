@@ -14,9 +14,14 @@ private:
 	//window untuk bermain
 	GameWindow* gameWindow;
 	void fitWindowSize();
+
 public:
 	MainFrame(const wxString &title);
 	void InitComponents();
 	void ShowHomeWindow();
 	void ShowGameWindow();
+
+	//x dan y main frame
+	int XMainFrame;
+	int YMainFrame;
 };

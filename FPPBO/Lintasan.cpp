@@ -2,7 +2,6 @@
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
 
-
 Lintasan::Lintasan()
 {
 	//load JPEGHandler untuk membaca file JPEG.
@@ -30,7 +29,7 @@ Lintasan::~Lintasan()
 	delete lintasan;
 }
 
-void Lintasan::Draw(wxPaintDC & event)
+void Lintasan::Draw(wxBufferedPaintDC & event)
 {
 	if (lintasan != nullptr)
 	{

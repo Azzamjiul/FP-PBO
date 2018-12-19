@@ -22,26 +22,19 @@
     <ClInclude Include="Box.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="HomeWindow.h" />
-    <ClInclude Include="KeyboardFrame.h" />
-    <ClInclude Include="KeyboardWindow.h" />
+    <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="Lintasan.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="Mobil.h" />
-    <ClInclude Include="TimerFrame.h" />
-    <ClInclude Include="TimerWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="HomeWindow.cpp" />
-    <ClCompile Include="KeyboardFrame.cpp" />
-    <ClCompile Include="KeyboardWindow.cpp" />
     <ClCompile Include="Lintasan.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="Mobil.cpp" />
-    <ClCompile Include="TimerFrame.cpp" />
-    <ClCompile Include="TimerWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

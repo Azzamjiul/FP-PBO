@@ -6,14 +6,15 @@ void MainFrame::fitWindowSize()
 {
 	this->boxSizer->Fit(this);
 	this->boxSizer->SetSizeHints(this);
-	this->SetSize(wxSize(640, 480));
+	this->SetSize(wxSize(1360, 768));
 	this->Layout();
 }
 
-MainFrame::MainFrame(const wxString & title)
-	: wxFrame(NULL, wxID_ANY, title)
+MainFrame::MainFrame(const wxString & title): wxFrame(NULL, wxID_ANY, title)
 {
 	this->InitComponents();
+	SetInitialSize(wxSize(1360, 768));
+	this->ShowFullScreen(true);
 }
 
 void MainFrame::InitComponents()
@@ -33,9 +34,9 @@ void MainFrame::InitComponents()
 	//tambahan jiul
 	XMainFrame = this->GetSize().GetX();
 	YMainFrame = this->GetSize().GetY();
-	//this->SetInitialSize(wxSize(1000, 500));
 
-	ShowHomeWindow();
+	//ShowHomeWindow();
+	ShowGameWindow();
 }
 
 void MainFrame::ShowHomeWindow()

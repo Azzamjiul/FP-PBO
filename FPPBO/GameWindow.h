@@ -17,7 +17,7 @@ public:
 	void OnKeyUp(wxKeyEvent &event);
 private:
 	Mobil *Car1;
-	Lintasan *lintasan, *lintasan2;
+	Lintasan *lintasan, *lintasan2, *lintasan3;
 	wxTimer *timer;
 	DECLARE_EVENT_TABLE()
 };

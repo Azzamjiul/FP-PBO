@@ -1,6 +1,7 @@
 #include "GameWindow.h"
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
+#include "wx/dcbuffer.h"
 
 BEGIN_EVENT_TABLE(GameWindow, wxWindow)
 	EVT_PAINT(GameWindow::OnPaint)
@@ -16,9 +17,10 @@ GameWindow::GameWindow(wxWindow *parent)
 	timer = new wxTimer(this, 1000);
 	timer->Start(50);
 	
-	Car1 = new Mobil(10, 10);
-	lintasan = new Lintasan(10, 10);
-	lintasan2 = new Lintasan(10, -256);
+	//Car1 = new Mobil(10, 100);
+	lintasan = new Lintasan(424,0);
+	lintasan2 = new Lintasan(424, 512);
+	lintasan3 = new Lintasan(424, -512);
 
 }
 
@@ -58,14 +60,11 @@ void GameWindow::loadRoad()
 
 void GameWindow::OnPaint(wxPaintEvent &event)
 {
-	wxPaintDC pdc(this);
-	/*
-	pdc.DrawBitmap(*Road, wxPoint(150, 100), true);
-	pdc.DrawBitmap(*Car1, wxPoint(150, 100), true);
-	*/
+	wxBufferedPaintDC pdc(this); //template
+	lintasan3->Draw(pdc);
 	lintasan->Draw(pdc);
 	lintasan2->Draw(pdc);
-	Car1->Draw(pdc);
+	//Car1->Draw(pdc);
 
 }
 
@@ -74,15 +73,13 @@ void GameWindow::OnTimer(wxTimerEvent & event)
 	double static time;
 	wxMessageOutputDebug().Printf("program ini berjalan selama %f", time++);
 
-	//this->OnKeyDown();
+	//lintasan
+	lintasan3->Move(0, 10);
 	lintasan->Move(0, 10);
 	lintasan2->Move(0, 10);
-	if (lintasan->getY() > GetClientSize().GetHeight()) {
-		lintasan->Move(0, -600);
-	}
-	if (lintasan2->getY() > GetClientSize().GetHeight()) {
-		lintasan2->Move(0, -600);
-	}
+	if (lintasan3->getY() > GetClientSize().GetHeight()) {lintasan3->Move(0,-1536);}
+	if (lintasan->getY() > GetClientSize().GetHeight())  {lintasan->Move(0,-1536);}
+	if (lintasan2->getY() > GetClientSize().GetHeight()) {lintasan2->Move(0,-1536);}
 	Refresh();
 }
 

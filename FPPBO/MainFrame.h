@@ -4,6 +4,9 @@
 class HomeWindow;
 class GameWindow;
 
+class Window;
+
+
 class MainFrame : public wxFrame {
 private:
 	wxBoxSizer* boxSizer;
@@ -15,8 +18,11 @@ private:
 	GameWindow* gameWindow;
 	void fitWindowSize();
 
+	//sulton
+	Window* window;
+
 public:
-	MainFrame(const wxString &title);
+	//MainFrame(const wxString &title);
 	void InitComponents();
 	void ShowHomeWindow();
 	void ShowGameWindow();
@@ -24,4 +30,9 @@ public:
 	//x dan y main frame
 	int XMainFrame;
 	int YMainFrame;
+
+	//sulton
+	MainFrame(const wxString &title);
 };
+
+

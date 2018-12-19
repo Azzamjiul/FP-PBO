@@ -2,8 +2,11 @@
 #include "wx\wx.h"
 #include "Mobil.h"
 #include "Lintasan.h"
+#include "Pemain.h"
+#include "Musuh.h"
 
-class Mobil;
+class Pemain;
+class Musuh;
 class Lintasan;
 
 class GameWindow : public wxWindow
@@ -16,7 +19,8 @@ public:
 	void OnKeyDown(wxKeyEvent &event);
 	void OnKeyUp(wxKeyEvent &event);
 private:
-	Mobil *Car1;
+	Pemain *player;
+	Musuh *musuh1, *musuh2, *musuh3, *musuh4;
 	Lintasan *lintasan, *lintasan2, *lintasan3;
 	wxTimer *timer;
 	DECLARE_EVENT_TABLE()

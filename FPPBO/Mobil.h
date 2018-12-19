@@ -1,5 +1,6 @@
 #pragma once
 #include "wx\wx.h"
+#include "wx/dcbuffer.h"
 
 class Mobil
 {
@@ -8,11 +9,12 @@ public:
 	Mobil(int x1, int y1);
 	~Mobil();
 
-	void Draw(wxPaintDC &event);
-	void Move(int dx, int dy); 
+	void Draw(wxBufferedPaintDC &event);
+	int getX();
+	int getY();
 private:
 	wxBitmap *mobil = nullptr;
-	int x1, x2, y1, y2;
+	int x1, y1;
 	void LoadMobil();
 };
 

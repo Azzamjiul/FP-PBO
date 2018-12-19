@@ -26,6 +26,8 @@
     <ClInclude Include="Lintasan.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="Mobil.h" />
+    <ClInclude Include="Musuh.h" />
+    <ClInclude Include="Pemain.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp" />
@@ -35,6 +37,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="Mobil.cpp" />
+    <ClCompile Include="Musuh.cpp" />
+    <ClCompile Include="Pemain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

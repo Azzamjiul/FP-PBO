@@ -17,8 +17,8 @@ Mobil::Mobil(int x1, int y1)
 	this->y1 = y1;
 
 	//load JPEGHandler untuk membaca file JPEG.
-	wxImageHandler *pngLoader = new wxPNGHandler();
-	wxImage::AddHandler(pngLoader);
+	wxImageHandler *jpegLoader = new wxPNGHandler();
+	wxImage::AddHandler(jpegLoader);
 	//load image
 	this->LoadMobil();
 }
@@ -29,7 +29,7 @@ Mobil::~Mobil()
 	delete mobil;
 }
 
-void Mobil::Draw(wxPaintDC & event)
+void Mobil::Draw(wxBufferedPaintDC & event)
 {
 	if (mobil != nullptr)
 	{
@@ -37,12 +37,14 @@ void Mobil::Draw(wxPaintDC & event)
 	}
 }
 
-void Mobil::Move(int dx, int dy)
+int Mobil::getX()
 {
-	this->x1 += dx;
-	this->y1 += dy;
-	this->x2 += dy;
-	this->y2 += dy;
+	return this->x1;
+}
+
+int Mobil::getY()
+{
+	return this->y1;
 }
 
 void Mobil::LoadMobil()
@@ -51,8 +53,7 @@ void Mobil::LoadMobil()
 	//letakkan file potato.jpg pada folder Debug
 	wxStandardPaths &stdPaths = wxStandardPaths::Get();
 	wxString fileLocation = stdPaths.GetExecutablePath();
-	fileLocation = wxFileName(fileLocation).GetPath() +
-		wxT("\\Car1.png");
+	fileLocation = wxFileName(fileLocation).GetPath() +	wxT("\\mobil.png");
 	wxMessageOutputDebug().Printf("Relative path of image is at %s", fileLocation);
 	wxImage image(fileLocation, wxBITMAP_TYPE_PNG);
 

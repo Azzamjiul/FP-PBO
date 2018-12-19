@@ -9,7 +9,6 @@ public:
 	Lintasan(int x1, int y1);
 	~Lintasan();
 
-	//void Draw(wxPaintDC &event);
 	void Draw(wxBufferedPaintDC &event);
 	void Move(int dx, int dy);
 	int getX();

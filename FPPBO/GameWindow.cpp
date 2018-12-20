@@ -15,13 +15,15 @@ GameWindow::GameWindow(wxWindow *parent)
 {
 	this->SetBackgroundColour(wxColour(*wxWHITE));
 	timer = new wxTimer(this, 1000);
-	timer->Start(50);
+	timer->Start(100);
 	
-	mobil = new Mobil(552, 510);
-	musuh1 = new Mobil(rand(), -20);
+	player = new Pemain(552, 675);
 	lintasan = new Lintasan(424,0);
 	lintasan2 = new Lintasan(424, 512);
 	lintasan3 = new Lintasan(424, -512);
+	int xrand = rand() % 450 + lintasan->getX();
+	musuh1 = new Musuh(xrand, 0);
+
 
 }
 
@@ -65,7 +67,7 @@ void GameWindow::OnPaint(wxPaintEvent &event)
 	lintasan3->Draw(pdc);
 	lintasan->Draw(pdc);
 	lintasan2->Draw(pdc);
-	mobil->Draw(pdc);
+	player->Draw(pdc);
 	musuh1->Draw(pdc);
 }
 
@@ -83,11 +85,16 @@ void GameWindow::OnTimer(wxTimerEvent & event)
 	if (lintasan2->getY() > GetClientSize().GetHeight()) {lintasan2->Move(0,-1536);}
 
 	//musuh
-	musuh1->Move(0, 30);
-	if (musuh1->getY() > GetClientSize().GetHeight()) { musuh1->Move(0, -1536); }
+	musuh1->Move(0, 40);
+	int xrand = rand() % 450 + lintasan->getX();
+	if (musuh1->getY() > GetClientSize().GetHeight()) { musuh1->change(xrand, 0); }
+
+	//tubrukan
+	if (player->getX() >= musuh1->getX() && player->getX() <= musuh1->getX() + 50 && player->getY() >= musuh1->getY() && player->getY() <= musuh1->getY() + 150) {
+		wxMessageBox(wxT("Mobil Menubruk."), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
 
 	Refresh();
-
 }
 
 void GameWindow::OnKeyDown(wxKeyEvent & event)
@@ -97,31 +104,31 @@ void GameWindow::OnKeyDown(wxKeyEvent & event)
 	if (event.GetKeyCode() == WXK_UP)
 	{
 		//wxMessageBox(wxT("Key up is pressed."), wxT("Keyboard event"),	wxOK | wxICON_INFORMATION, this);
-		if (mobil->getY() > 0) {
-			mobil->Up();
+		if (player->getY() > 0) {
+			player->Move(0, -20);
 		}
 	}
 	else if (event.GetKeyCode() == WXK_RIGHT)
 	{
 		//wxMessageBox(wxT("Key right is pressed."), wxT("Keyboard event"),wxOK | wxICON_INFORMATION, this);
-		if (mobil->getX() < 424 + 350) {
-			mobil->Right();
+		if (player->getX() < lintasan->getX() + 512 - 70) {
+			player->Move(20,0);
 		}
 		
 	}
 	else if (event.GetKeyCode() == WXK_DOWN)
 	{
 		//wxMessageBox(wxT("Key down is pressed."), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
-		if (mobil->getY() + 300 < 768) {
-			mobil->Bottom();
+		if (player->getY() + 100 < 768) {
+			player->Move(0, 20);
 		}
 		
 	}
 	else if (event.GetKeyCode() == WXK_LEFT)
 	{
 		//wxMessageBox(wxT("Key left is pressed."), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
-		if (mobil->getX() > 434) {
-			mobil->Left();
+		if (player->getX() > 434) {
+			player->Move(-20, 0);
 		}
 		
 	}

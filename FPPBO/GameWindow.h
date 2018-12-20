@@ -5,6 +5,7 @@
 #include "Pemain.h"
 #include "Musuh.h"
 
+class Mobil;
 class Pemain;
 class Musuh;
 class Lintasan;
@@ -18,6 +19,8 @@ public:
 	void OnTimer(wxTimerEvent &event);
 	void OnKeyDown(wxKeyEvent &event);
 	void OnKeyUp(wxKeyEvent &event);
+	void Tubrukan();
+	long long int highscore;
 private:
 	Pemain *player;
 	Musuh *musuh1, *musuh2, *musuh3, *musuh4;

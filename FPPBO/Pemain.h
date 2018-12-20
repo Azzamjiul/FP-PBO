@@ -1,14 +1,16 @@
 #pragma once
 #include "Mobil.h"
+
 class Pemain :
 	public Mobil
 {
 public:
-	Pemain();
+	Pemain(int x, int y);
 	~Pemain();
-	void Right();
-	void Bottom();
-	void Left();
-	void Up();
+	void LoadMobil();
+	void Tubrukan();
+	void UpScore();
+	long long int score;
+	bool isNubruk;
 };
 

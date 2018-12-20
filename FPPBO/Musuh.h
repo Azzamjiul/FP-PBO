@@ -1,13 +1,13 @@
 #pragma once
 #include "Mobil.h"
+
 class Musuh :
 	public Mobil
 {
-private:
-	int x, y;
 public:
-	Musuh();
+	Musuh(int x, int y);
 	~Musuh();
-	void Move(int dx, int dy);
+	void LoadMobil();
+
 };
 

@@ -5,16 +5,15 @@
 class Mobil
 {
 public:
-	Mobil();
-	Mobil(int x1, int y1);
+	Mobil(int x, int y);
 	~Mobil();
-
-	void Draw(wxBufferedPaintDC &event);
-	int getX();
-	int getY();
-private:
+	int x, y, x1, y1, x2, y2, x3, y3;
+	virtual void Draw(wxBufferedPaintDC &event);
+	virtual void Move(int dx, int dy);
+	virtual void LoadMobil() = 0;
+	virtual int getX();
+	virtual int getY();
+	virtual void change(int x, int y);
 	wxBitmap *mobil = nullptr;
-	int x1, y1;
-	void LoadMobil();
 };
 

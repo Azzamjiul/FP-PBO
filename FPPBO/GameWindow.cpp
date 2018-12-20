@@ -23,8 +23,12 @@ GameWindow::GameWindow(wxWindow *parent)
 	lintasan3 = new Lintasan(424, -512);
 	int xrand = rand() % 450 + lintasan->getX();
 	musuh1 = new Musuh(xrand, 0);
-
-
+	xrand = rand() % 430 + lintasan->getX();
+	musuh2 = new Musuh(xrand, 0);
+	xrand = rand() % 410 + lintasan->getX();
+	musuh3 = new Musuh(xrand, 0);
+	xrand = rand() % 400 + lintasan->getX();
+	musuh4 = new Musuh(xrand, 0);
 }
 
 GameWindow::~GameWindow()
@@ -69,6 +73,9 @@ void GameWindow::OnPaint(wxPaintEvent &event)
 	lintasan2->Draw(pdc);
 	player->Draw(pdc);
 	musuh1->Draw(pdc);
+	musuh2->Draw(pdc);
+	musuh3->Draw(pdc);
+	musuh4->Draw(pdc);
 }
 
 void GameWindow::OnTimer(wxTimerEvent & event)
@@ -84,15 +91,90 @@ void GameWindow::OnTimer(wxTimerEvent & event)
 	if (lintasan->getY() > GetClientSize().GetHeight())  {lintasan->Move(0,-1536);}
 	if (lintasan2->getY() > GetClientSize().GetHeight()) {lintasan2->Move(0,-1536);}
 
-	//musuh
+	//musuh1
 	musuh1->Move(0, 40);
+	musuh2->Move(0, 40);
+	musuh3->Move(0, 40);
+	musuh4->Move(0, 40);
+
+	//tubrukan1
+	if (player->getX() >= musuh1->getX() 
+		&& player->getX() <= musuh1->getX() + 50
+		&& player->getY() >= musuh1->getY() 
+		&& player->getY() <= musuh1->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk. 1 kanan"), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+	if (player->getX() <= musuh1->getX()
+		&& player->getX() + 50 >= musuh1->getX()
+		&& player->getY() >= musuh1->getY()
+		&& player->getY() <= musuh1->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk 1 kiri."), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+	//tubrukan2
+	if (player->getX() >= musuh2->getX()
+		&& player->getX() <= musuh2->getX() + 50
+		&& player->getY() >= musuh2->getY()
+		&& player->getY() <= musuh2->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk. 2 kanan"), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+	if (player->getX() <= musuh2->getX()
+		&& player->getX() + 50 >= musuh2->getX()
+		&& player->getY() >= musuh2->getY()
+		&& player->getY() <= musuh2->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk. 2 kiri"), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+	//tubrukan3
+	if (player->getX() >= musuh3->getX()
+		&& player->getX() <= musuh3->getX() + 50
+		&& player->getY() >= musuh3->getY()
+		&& player->getY() <= musuh3->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk. 3 kanan"), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+	if (player->getX() <= musuh3->getX()
+		&& player->getX() + 50 >= musuh3->getX()
+		&& player->getY() >= musuh3->getY()
+		&& player->getY() <= musuh3->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk. 3 kiri"), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+	//tubrukan4
+	if (player->getX() >= musuh4->getX()
+		&& player->getX() <= musuh4->getX() + 50
+		&& player->getY() >= musuh4->getY()
+		&& player->getY() <= musuh4->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk 4 kanan."), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+	if (player->getX() <= musuh4->getX()
+		&& player->getX() + 50 >= musuh4->getX()
+		&& player->getY() >= musuh4->getY()
+		&& player->getY() <= musuh4->getY() + 150
+		) {
+		wxMessageBox(wxT("Mobil Menubruk 4 kiri"), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+	}
+
+
+	//ulang musuh
 	int xrand = rand() % 450 + lintasan->getX();
 	if (musuh1->getY() > GetClientSize().GetHeight()) { musuh1->change(xrand, 0); }
-
-	//tubrukan
-	if (player->getX() >= musuh1->getX() && player->getX() <= musuh1->getX() + 50 && player->getY() >= musuh1->getY() && player->getY() <= musuh1->getY() + 150) {
-		wxMessageBox(wxT("Mobil Menubruk."), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
-	}
+	xrand += rand() % 70;
+	if (musuh2->getY() > GetClientSize().GetHeight()) { musuh2->change(xrand, 0); }
+	xrand += rand() % 70;
+	if (musuh3->getY() > GetClientSize().GetHeight()) { musuh3->change(xrand, 0); }
+	xrand += rand() % 70;
+	if (musuh4->getY() > GetClientSize().GetHeight()) { musuh4->change(xrand, 0); }
 
 	Refresh();
 }

@@ -35,7 +35,7 @@ void HomeWindow::OnStartButtonClick(wxCommandEvent & event)
 
 void HomeWindow::OnPaint(wxPaintEvent & event)
 {
-	wxPaintDC pdc(this);
+	wxBufferedPaintDC pdc(this);
 
 	if (HomeBitmap != nullptr)
 	{
@@ -49,7 +49,7 @@ void HomeWindow::LoadHomeBitmap()
 	//letakkan file potato.jpg pada folder Debug
 	wxStandardPaths &stdPaths = wxStandardPaths::Get();
 	wxString fileLocation = stdPaths.GetExecutablePath();
-	fileLocation = wxFileName(fileLocation).GetPath() +	wxT("\\potato.jpg");
+	fileLocation = wxFileName(fileLocation).GetPath() +	wxT("\\asset\\MainMenu.jpg");
 	wxMessageOutputDebug().Printf("Relative path of image is at %s",fileLocation);
 	wxImage image(fileLocation, wxBITMAP_TYPE_JPEG);
 	

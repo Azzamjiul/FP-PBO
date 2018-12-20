@@ -37,7 +37,9 @@ void Pemain::LoadMobil()
 	fileLocation = wxFileName(fileLocation).GetPath() + wxT("\\mobil.png");
 	wxMessageOutputDebug().Printf("Relative path of image is at %s", fileLocation);
 	wxImage image(fileLocation, wxBITMAP_TYPE_PNG);
-	image.Rescale(50, 100, wxIMAGE_QUALITY_NORMAL);
+
+	image.Rescale(50, 100, wxIMAGE_QUALITY_HIGH);
+
 	mobil = new wxBitmap(image);
 }
 

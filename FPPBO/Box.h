@@ -1,5 +1,6 @@
 #pragma once
 #include <wx\dcclient.h>
+#include "wx/dcbuffer.h"
 class Box
 {
 private:
@@ -12,6 +13,6 @@ private:
 public:
 	Box();
 	Box(int x, int y, int width, int height);
-	void Draw(wxPaintDC &dc);
+	void Draw(wxBufferedPaintDC &dc);
 	void Move(int xAmount, int yAmount, int maxX, int maxY);
 };

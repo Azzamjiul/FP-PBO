@@ -6,7 +6,7 @@ Box::Box(int x, int y, int width, int height)
 	: x(x), y(y), width(width), height(height)
 {
 }
-void Box::Draw(wxPaintDC &dc)
+void Box::Draw(wxBufferedPaintDC &dc)
 {
 	dc.SetBrush(wxBrush(wxColour(*wxRED)));
 	dc.SetPen(wxPen(wxColor(*wxGREEN), 1, wxPENSTYLE_SOLID));

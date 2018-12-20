@@ -1,6 +1,7 @@
 #pragma once
 #include "wx/wx.h"
 #include "MainFrame.h"
+#include "wx/dcbuffer.h"
 
 class HomeWindow : public wxWindow
 {

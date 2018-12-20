@@ -15,7 +15,7 @@ GameWindow::GameWindow(wxWindow *parent)
 {
 	this->SetBackgroundColour(wxColour(*wxWHITE));
 	timer = new wxTimer(this, 1000);
-	timer->Start(100);
+	timer->Start(50);
 	
 	player = new Pemain(552, 675);
 	lintasan = new Lintasan(424,0);
@@ -90,8 +90,12 @@ void GameWindow::OnTimer(wxTimerEvent & event)
 	if (musuh1->getY() > GetClientSize().GetHeight()) { musuh1->change(xrand, 0); }
 
 	//tubrukan
-	if (player->getX() >= musuh1->getX() && player->getX() <= musuh1->getX() + 50 && player->getY() >= musuh1->getY() && player->getY() <= musuh1->getY() + 150) {
+	if (player->getX() >= musuh1->getX() &&
+		player->getX() <= musuh1->getX() + 50 && 
+		player->getY() >= musuh1->getY() && 
+		player->getY() <= musuh1->getY() + 150) {
 		wxMessageBox(wxT("Mobil Menubruk."), wxT("Keyboard event"), wxOK | wxICON_INFORMATION, this);
+
 	}
 
 	Refresh();
